@@ -1,0 +1,84 @@
+{
+  "name": "zotero-cite-texmd",
+  "displayName": "Zotero Cite for TeXMD",
+  "description": "基于 Zotero Better BibTeX 的引用管理扩展：LaTeX/Markdown/BibTeX 文档中引用并更新文献、导出 BibTeX、更新 BibTeX 条目。Markdown 渲染国标（GB/T 7714）脚注，不操作 .bib 文件。",
+  "version": "0.0.1",
+  "publisher": "boyayan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BoyaYan/zotero-cite-texmd.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "zotero-cite-texmd.showTaskPicker",
+        "title": "Zotero Cite for TeXMD: 选择命令"
+      },
+      {
+        "command": "zotero-cite-texmd.exportBib",
+        "title": "Zotero Cite for TeXMD: 导出 BibTeX"
+      },
+      {
+        "command": "zotero-cite-texmd.citeBibliography",
+        "title": "Zotero Cite for TeXMD: 引用并更新文献"
+      },
+      {
+        "command": "zotero-cite-texmd.updateBibtexEntries",
+        "title": "Zotero Cite for TeXMD: 更新 BibTeX 条目"
+      }
+    ],
+    "configuration": {
+      "title": "Zotero Cite for TeXMD",
+      "properties": {
+        "zotero-cite-texmd.endpoint": {
+          "type": "string",
+          "default": "http://localhost:23119/better-bibtex/json-rpc",
+          "description": "Zotero Better BibTeX JSON-RPC 接口地址"
+        },
+        "zotero-cite-texmd.caywUrl": {
+          "type": "string",
+          "default": "http://localhost:23119/better-bibtex/cayw",
+          "description": "Zotero CAYW (Cite As You Write) 接口地址，用于弹出选择窗口"
+        },
+        "zotero-cite-texmd.defaultBibName": {
+          "type": "string",
+          "default": "ref.bib",
+          "description": "导出引用文件的默认文件名"
+        },
+        "zotero-cite-texmd.latexBibStyle": {
+          "type": "string",
+          "enum": [
+            "bibtex",
+            "biblatex"
+          ],
+          "default": "bibtex",
+          "description": "导出的 LaTeX 引用格式"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "tsc -p ./ && vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

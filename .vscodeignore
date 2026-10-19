@@ -1,0 +1,12 @@
+﻿.vscode/**
+.vscode-test/**
+src/**
+**/*.map
+**/.gitignore
+**/tsconfig.json
+**/*.vsix
+# 排除开发依赖和类型定义（运行时不需要）
+node_modules/.bin/**
+node_modules/@types/**
+node_modules/typescript/**
+node_modules/undici-types/**
